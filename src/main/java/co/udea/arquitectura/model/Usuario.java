@@ -11,6 +11,7 @@ public class Usuario {
 	@Id
 	private String idusuario;
 	private String password;
+	private String idPersona;
 	private String rol;
 	private String state;
 
@@ -18,12 +19,13 @@ public class Usuario {
 		super();
 	}
 
-	public Usuario(String idusuario, String password, String rol, String state) {
+	public Usuario(String idusuario, String password, String rol, String state, String idPersona) {
 		super();
 		this.idusuario = idusuario;
 		this.password = password;
 		this.rol = rol;
 		this.state = state;
+		this.idPersona = idPersona;
 	}
 
 	/**
@@ -80,6 +82,20 @@ public class Usuario {
 	 */
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	/**
+	 * @return the idPersona
+	 */
+	public String getIdPersona() {
+		return idPersona;
+	}
+
+	/**
+	 * @param idPersona the idPersona to set
+	 */
+	public void setIdPersona(String idPersona) {
+		this.idPersona = idPersona;
 	}
 
 	
