@@ -84,7 +84,7 @@ public class UsuarioController {
             @ApiResponse(code = 404, message = "Recurso no encontrado"),
             @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
 	public void updateUsuario(@RequestBody Usuario usuario ){
-		 log.debug("REST request updateProyecto id : {}", usuario.getId());
+		 log.debug("REST request updateProyecto id : {}", usuario.getIdusuario());
 		usuarioService.updateUsuario(usuario);
 	}
 	

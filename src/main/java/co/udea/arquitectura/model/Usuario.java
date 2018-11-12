@@ -5,14 +5,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuariosApp")
 public class Usuario {
 
 	@Id
-	private String id;
-	private String nombres;
-	private String apellidos;
-	private String usuario;
+	private String idusuario;
 	private String password;
 	private String rol;
 	private String state;
@@ -21,72 +18,26 @@ public class Usuario {
 		super();
 	}
 
-	public Usuario(String id, String nombres, String apellidos, String user, String password, String rol,
-			String state) {
+	public Usuario(String idusuario, String password, String rol, String state) {
 		super();
-		this.id = id;
-		this.nombres = nombres;
-		this.apellidos = apellidos;
-		this.usuario = user;
+		this.idusuario = idusuario;
 		this.password = password;
 		this.rol = rol;
 		this.state = state;
 	}
 
 	/**
-	 * @return the id
+	 * @return the idusuario
 	 */
-	public String getId() {
-		return id;
+	public String getIdusuario() {
+		return idusuario;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param idusuario the idusuario to set
 	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the nombres
-	 */
-	public String getNombres() {
-		return nombres;
-	}
-
-	/**
-	 * @param nombres the nombres to set
-	 */
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
-	}
-
-	/**
-	 * @return the apellidos
-	 */
-	public String getApellidos() {
-		return apellidos;
-	}
-
-	/**
-	 * @param apellidos the apellidos to set
-	 */
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
-	/**
-	 * @return the user
-	 */
-	public String getUser() {
-		return usuario;
-	}
-
-	/**
-	 * @param user the user to set
-	 */
-	public void setUser(String user) {
-		this.usuario = user;
+	public void setIdusuario(String idusuario) {
+		this.idusuario = idusuario;
 	}
 
 	/**
@@ -130,5 +81,7 @@ public class Usuario {
 	public void setState(String state) {
 		this.state = state;
 	}
+
+	
 
 }

@@ -28,74 +28,74 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/persona")
 public class PersonaController {
 	
 	private static Logger log = LoggerFactory.getLogger(PersonaController.class);
 	
-	private PersonaService clienteService;
+	private PersonaService personaService;
 	
 	@Autowired
     private Messages messages;	
 	
-	public PersonaController(PersonaService clienteService) {
-		this.clienteService = clienteService;
+	public PersonaController(PersonaService personaService) {
+		this.personaService = personaService;
 	}
 	
 	@GetMapping(value = "consultar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Consultar cliente por id", response = Page.class)
+    @ApiOperation(value = "Consultar persona por id", response = Page.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Cliente encontrado", response = Persona.class),
+            @ApiResponse(code = 200, message = "PErsona encontrado", response = Persona.class),
             @ApiResponse(code = 400, message = "La petición es invalida"),
             @ApiResponse(code = 404, message = "Recurso no encontrado"),
             @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
-	public ResponseEntity<Persona> getCliente( @PathVariable("id") String id){
+	public ResponseEntity<Persona> getPersona( @PathVariable("id") String id){
 		 log.debug("REST request getCliente id : {}", id);
-		return ResponseEntity.ok(clienteService.getCliente(id));
+		return ResponseEntity.ok(personaService.getPersona(id));
 	}
 	
 	@GetMapping(value = "listar", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Buscar todos", response = Page.class)
 	@ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Los clientes fueron buscados", response = Page.class),
+            @ApiResponse(code = 200, message = "Los Personas fueron buscados", response = Page.class),
             @ApiResponse(code = 400, message = "La petición es invalida"),
             @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
-	public ResponseEntity<List<Persona>> getClientes(){
-		log.debug("REST request listar todos los clientes");
-		return ResponseEntity.ok(clienteService.getClientes());		
+	public ResponseEntity<List<Persona>> getPersonas(){
+		log.debug("REST request listar todos los personas");
+		return ResponseEntity.ok(personaService.getPersonas());		
 	}
 	
 	@DeleteMapping(value = "borrar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Borrar cliente por id", response = Page.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Cliente Borrado", response = Persona.class),
+            @ApiResponse(code = 200, message = "Persona Borrado", response = Persona.class),
             @ApiResponse(code = 400, message = "La petición es invalida"),
             @ApiResponse(code = 404, message = "Recurso no encontrado"),
             @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
-	public void deleteClienteId( @PathVariable("id") String id){
-		 log.debug("REST request deleteCliente id : {}", id);
-		 clienteService.deleteClienteId(id);
+	public void deletePersonaId( @PathVariable("id") String id){
+		 log.debug("REST request deletePersonaId id : {}", id);
+		 personaService.deletePersonaId(id);
 	}
 	
 	@PutMapping(value = "actualizar/", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "Actualizar Cliente", response = Page.class)
+	@ApiOperation(value = "Actualizar Persona", response = Page.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Cliente actualizado", response = Persona.class),
+            @ApiResponse(code = 200, message = "Persona actualizado", response = Persona.class),
             @ApiResponse(code = 400, message = "La petición es invalida"),
             @ApiResponse(code = 404, message = "Recurso no encontrado"),
             @ApiResponse(code = 500, message = "Error interno al procesar la respuesta")})
-	public void updateCliente(@RequestBody Persona cliente ){
-		 log.debug("REST request updateCliente id : {}", cliente.getId());
-		clienteService.updateCliente(cliente);
+	public void updatePersona(@RequestBody Persona persona ){
+		 log.debug("REST request updateCliente id : {}", persona.getId());
+		personaService.updatePersona(persona);
 	}
 	
 	@RequestMapping(value="crear", method=RequestMethod.POST)
-	public Persona addCliente(@RequestBody Persona cliente) throws DataNotFoundException{
+	public Persona addPersona(@RequestBody Persona persona) throws DataNotFoundException{
 		log.debug("Entro a crear");
-		if(cliente == null){
+		if(persona == null){
 			throw new DataNotFoundException(messages.get("exception.data_not_found.cliente"));
 		}
-		return clienteService.addCliente(cliente);		
+		return personaService.addPersona(persona);		
 		
 	}
 
